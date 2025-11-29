@@ -1,5 +1,7 @@
 import asyncio
 from bleak import BleakClient, BleakScanner
+from app.tools.hub_control import HubControl
+
 
 # --- CONFIGURATION ---
 # PASTE YOUR MAC-SPECIFIC UUID HERE
