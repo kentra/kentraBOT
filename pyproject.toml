@@ -6,4 +6,5 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "bleak>=2.0.0",
+    "pybricks>=3.6.1",
 ]
