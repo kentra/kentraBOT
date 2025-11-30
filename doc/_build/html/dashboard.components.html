@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dashboard.components package &mdash; Lego_BLE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dashboard.pages package" href="dashboard.pages.html" />
+    <link rel="prev" title="dashboard.backend package" href="dashboard.backend.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Lego_BLE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app.html">app package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="dashboard.html">dashboard package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dashboard.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dashboard.backend.html">dashboard.backend package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">dashboard.components package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dashboard.pages.html">dashboard.pages package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dashboard.templates.html">dashboard.templates package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dashboard.views.html">dashboard.views package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#module-dashboard.dashboard">dashboard.dashboard module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#module-dashboard.styles">dashboard.styles module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#module-dashboard">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rxconfig.html">rxconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html">src package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_example.html">test_example module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Lego_BLE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
+          <li class="breadcrumb-item"><a href="dashboard.html">dashboard package</a></li>
+      <li class="breadcrumb-item active">dashboard.components package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dashboard.components.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dashboard-components-package">
+<h1>dashboard.components package<a class="headerlink" href="#dashboard-components-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-dashboard.components.card">
+<span id="dashboard-components-card-module"></span><h2>dashboard.components.card module<a class="headerlink" href="#module-dashboard.components.card" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.card.card">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.card.</span></span><span class="sig-name descname"><span class="pre">card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">children</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dashboard/components/card.html#card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.card.card" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-dashboard.components.navbar">
+<span id="dashboard-components-navbar-module"></span><h2>dashboard.components.navbar module<a class="headerlink" href="#module-dashboard.components.navbar" title="Link to this heading"></a></h2>
+<p>Navbar component for the app.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.navbar.menu_button">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.navbar.</span></span><span class="sig-name descname"><span class="pre">menu_button</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/components/navbar.html#menu_button"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.navbar.menu_button" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.navbar.menu_item">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.navbar.</span></span><span class="sig-name descname"><span class="pre">menu_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/components/navbar.html#menu_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.navbar.menu_item" title="Link to this definition"></a></dt>
+<dd><p>Menu item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> – The text of the item.</p></li>
+<li><p><strong>url</strong> – The URL of the item.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The menu item component.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>rx.Component</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.navbar.menu_item_icon">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.navbar.</span></span><span class="sig-name descname"><span class="pre">menu_item_icon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">icon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/components/navbar.html#menu_item_icon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.navbar.menu_item_icon" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.navbar.navbar">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.navbar.</span></span><span class="sig-name descname"><span class="pre">navbar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/components/navbar.html#navbar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.navbar.navbar" title="Link to this definition"></a></dt>
+<dd><p>The navbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The navbar component.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.navbar.navbar_footer">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.navbar.</span></span><span class="sig-name descname"><span class="pre">navbar_footer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/components/navbar.html#navbar_footer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.navbar.navbar_footer" title="Link to this definition"></a></dt>
+<dd><p>Navbar footer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The navbar footer component.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-dashboard.components.notification">
+<span id="dashboard-components-notification-module"></span><h2>dashboard.components.notification module<a class="headerlink" href="#module-dashboard.components.notification" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.notification.notification">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.notification.</span></span><span class="sig-name descname"><span class="pre">notification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">icon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'tomato'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'red'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ruby'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'crimson'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'pink'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'plum'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'purple'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'violet'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'iris'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'indigo'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'blue'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cyan'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'teal'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'jade'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'green'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'grass'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'brown'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'orange'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'sky'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'mint'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'lime'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'yellow'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'amber'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'gold'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'bronze'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'gray'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/components/notification.html#notification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.notification.notification" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-dashboard.components.profile_input">
+<span id="dashboard-components-profile-input-module"></span><h2>dashboard.components.profile_input module<a class="headerlink" href="#module-dashboard.components.profile_input" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.profile_input.profile_input">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.profile_input.</span></span><span class="sig-name descname"><span class="pre">profile_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placeholder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/components/profile_input.html#profile_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.profile_input.profile_input" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-dashboard.components.sidebar">
+<span id="dashboard-components-sidebar-module"></span><h2>dashboard.components.sidebar module<a class="headerlink" href="#module-dashboard.components.sidebar" title="Link to this heading"></a></h2>
+<p>Sidebar component for the app.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.sidebar.sidebar">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.sidebar.</span></span><span class="sig-name descname"><span class="pre">sidebar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/components/sidebar.html#sidebar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.sidebar.sidebar" title="Link to this definition"></a></dt>
+<dd><p>The sidebar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The sidebar component.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.sidebar.sidebar_footer">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.sidebar.</span></span><span class="sig-name descname"><span class="pre">sidebar_footer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/components/sidebar.html#sidebar_footer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.sidebar.sidebar_footer" title="Link to this definition"></a></dt>
+<dd><p>Sidebar footer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The sidebar footer component.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.sidebar.sidebar_header">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.sidebar.</span></span><span class="sig-name descname"><span class="pre">sidebar_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/components/sidebar.html#sidebar_header"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.sidebar.sidebar_header" title="Link to this definition"></a></dt>
+<dd><p>Sidebar header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The sidebar header component.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.sidebar.sidebar_item">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.sidebar.</span></span><span class="sig-name descname"><span class="pre">sidebar_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/components/sidebar.html#sidebar_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.sidebar.sidebar_item" title="Link to this definition"></a></dt>
+<dd><p>Sidebar item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> – The text of the item.</p></li>
+<li><p><strong>url</strong> – The URL of the item.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The sidebar item component.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>rx.Component</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.sidebar.sidebar_item_icon">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.sidebar.</span></span><span class="sig-name descname"><span class="pre">sidebar_item_icon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">icon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/components/sidebar.html#sidebar_item_icon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.sidebar.sidebar_item_icon" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-dashboard.components.status_badge">
+<span id="dashboard-components-status-badge-module"></span><h2>dashboard.components.status_badge module<a class="headerlink" href="#module-dashboard.components.status_badge" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.components.status_badge.status_badge">
+<span class="sig-prename descclassname"><span class="pre">dashboard.components.status_badge.</span></span><span class="sig-name descname"><span class="pre">status_badge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dashboard/components/status_badge.html#status_badge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.components.status_badge.status_badge" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-dashboard.components">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dashboard.components" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dashboard.backend.html" class="btn btn-neutral float-left" title="dashboard.backend package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dashboard.pages.html" class="btn btn-neutral float-right" title="dashboard.pages package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Daniel Kolstad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dashboard.views.table &mdash; Lego_BLE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Lego_BLE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Lego_BLE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dashboard.views.table</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dashboard.views.table</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">reflex</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">rx</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..backend.table_state</span><span class="w"> </span><span class="kn">import</span> <span class="n">Item</span><span class="p">,</span> <span class="n">TableState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..components.status_badge</span><span class="w"> </span><span class="kn">import</span> <span class="n">status_badge</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_header_cell</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">icon</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">rx</span><span class="o">.</span><span class="n">Component</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">rx</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">column_header_cell</span><span class="p">(</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">text</span><span class="p">),</span>
+            <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+            <span class="n">spacing</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_show_item</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">Item</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">rx</span><span class="o">.</span><span class="n">Component</span><span class="p">:</span>
+    <span class="n">bg_color</span> <span class="o">=</span> <span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+        <span class="n">index</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;accent&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">hover_color</span> <span class="o">=</span> <span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+        <span class="n">index</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;accent&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">rx</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">row</span><span class="p">(</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">row_header_cell</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;$</span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">payment</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">date</span><span class="p">),</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="n">status_badge</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">status</span><span class="p">)),</span>
+        <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;_hover&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="n">hover_color</span><span class="p">},</span> <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="n">bg_color</span><span class="p">},</span>
+        <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_pagination_view</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">rx</span><span class="o">.</span><span class="n">Component</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+                <span class="s2">&quot;Page &quot;</span><span class="p">,</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">code</span><span class="p">(</span><span class="n">TableState</span><span class="o">.</span><span class="n">page_number</span><span class="p">),</span>
+                <span class="sa">f</span><span class="s2">&quot; of </span><span class="si">{</span><span class="n">TableState</span><span class="o">.</span><span class="n">total_pages</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">justify</span><span class="o">=</span><span class="s2">&quot;end&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">icon_button</span><span class="p">(</span>
+                    <span class="n">rx</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="s2">&quot;chevrons-left&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">),</span>
+                    <span class="n">on_click</span><span class="o">=</span><span class="n">TableState</span><span class="o">.</span><span class="n">first_page</span><span class="p">,</span>
+                    <span class="n">opacity</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">TableState</span><span class="o">.</span><span class="n">page_number</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                    <span class="n">color_scheme</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">TableState</span><span class="o">.</span><span class="n">page_number</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="s2">&quot;accent&quot;</span><span class="p">),</span>
+                    <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;soft&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">icon_button</span><span class="p">(</span>
+                    <span class="n">rx</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="s2">&quot;chevron-left&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">),</span>
+                    <span class="n">on_click</span><span class="o">=</span><span class="n">TableState</span><span class="o">.</span><span class="n">prev_page</span><span class="p">,</span>
+                    <span class="n">opacity</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">TableState</span><span class="o">.</span><span class="n">page_number</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                    <span class="n">color_scheme</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">TableState</span><span class="o">.</span><span class="n">page_number</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="s2">&quot;accent&quot;</span><span class="p">),</span>
+                    <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;soft&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">icon_button</span><span class="p">(</span>
+                    <span class="n">rx</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="s2">&quot;chevron-right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">),</span>
+                    <span class="n">on_click</span><span class="o">=</span><span class="n">TableState</span><span class="o">.</span><span class="n">next_page</span><span class="p">,</span>
+                    <span class="n">opacity</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+                        <span class="n">TableState</span><span class="o">.</span><span class="n">page_number</span> <span class="o">==</span> <span class="n">TableState</span><span class="o">.</span><span class="n">total_pages</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span>
+                    <span class="p">),</span>
+                    <span class="n">color_scheme</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+                        <span class="n">TableState</span><span class="o">.</span><span class="n">page_number</span> <span class="o">==</span> <span class="n">TableState</span><span class="o">.</span><span class="n">total_pages</span><span class="p">,</span>
+                        <span class="s2">&quot;gray&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;accent&quot;</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;soft&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">icon_button</span><span class="p">(</span>
+                    <span class="n">rx</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="s2">&quot;chevrons-right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">),</span>
+                    <span class="n">on_click</span><span class="o">=</span><span class="n">TableState</span><span class="o">.</span><span class="n">last_page</span><span class="p">,</span>
+                    <span class="n">opacity</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+                        <span class="n">TableState</span><span class="o">.</span><span class="n">page_number</span> <span class="o">==</span> <span class="n">TableState</span><span class="o">.</span><span class="n">total_pages</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span>
+                    <span class="p">),</span>
+                    <span class="n">color_scheme</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+                        <span class="n">TableState</span><span class="o">.</span><span class="n">page_number</span> <span class="o">==</span> <span class="n">TableState</span><span class="o">.</span><span class="n">total_pages</span><span class="p">,</span>
+                        <span class="s2">&quot;gray&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;accent&quot;</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;soft&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+                <span class="n">spacing</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+                <span class="n">justify</span><span class="o">=</span><span class="s2">&quot;end&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">spacing</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="p">,</span>
+            <span class="n">margin_top</span><span class="o">=</span><span class="s2">&quot;1em&quot;</span><span class="p">,</span>
+            <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span>
+            <span class="n">justify</span><span class="o">=</span><span class="s2">&quot;end&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="main_table">
+<a class="viewcode-back" href="../../../dashboard.views.html#dashboard.views.table.main_table">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main_table</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">rx</span><span class="o">.</span><span class="n">Component</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">rx</span><span class="o">.</span><span class="n">box</span><span class="p">(</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">flex</span><span class="p">(</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">flex</span><span class="p">(</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+                    <span class="n">TableState</span><span class="o">.</span><span class="n">sort_reverse</span><span class="p">,</span>
+                    <span class="n">rx</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span>
+                        <span class="s2">&quot;arrow-down-z-a&quot;</span><span class="p">,</span>
+                        <span class="n">size</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span>
+                        <span class="n">stroke_width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+                        <span class="n">cursor</span><span class="o">=</span><span class="s2">&quot;pointer&quot;</span><span class="p">,</span>
+                        <span class="n">flex_shrink</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+                        <span class="n">on_click</span><span class="o">=</span><span class="n">TableState</span><span class="o">.</span><span class="n">toggle_sort</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="n">rx</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span>
+                        <span class="s2">&quot;arrow-down-a-z&quot;</span><span class="p">,</span>
+                        <span class="n">size</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span>
+                        <span class="n">stroke_width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+                        <span class="n">cursor</span><span class="o">=</span><span class="s2">&quot;pointer&quot;</span><span class="p">,</span>
+                        <span class="n">flex_shrink</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+                        <span class="n">on_click</span><span class="o">=</span><span class="n">TableState</span><span class="o">.</span><span class="n">toggle_sort</span><span class="p">,</span>
+                    <span class="p">),</span>
+                <span class="p">),</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;payment&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;status&quot;</span><span class="p">,</span>
+                    <span class="p">],</span>
+                    <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Sort By: Name&quot;</span><span class="p">,</span>
+                    <span class="n">size</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">,</span>
+                    <span class="n">on_change</span><span class="o">=</span><span class="n">TableState</span><span class="o">.</span><span class="n">set_sort_value</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">input</span><span class="p">(</span>
+                    <span class="n">rx</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">slot</span><span class="p">(</span><span class="n">rx</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">)),</span>
+                    <span class="n">rx</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">slot</span><span class="p">(</span>
+                        <span class="n">rx</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">),</span>
+                        <span class="n">justify</span><span class="o">=</span><span class="s2">&quot;end&quot;</span><span class="p">,</span>
+                        <span class="n">cursor</span><span class="o">=</span><span class="s2">&quot;pointer&quot;</span><span class="p">,</span>
+                        <span class="n">on_click</span><span class="o">=</span><span class="n">TableState</span><span class="o">.</span><span class="n">set_search_value</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+                        <span class="n">display</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">TableState</span><span class="o">.</span><span class="n">search_value</span><span class="p">,</span> <span class="s2">&quot;flex&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">),</span>
+                    <span class="p">),</span>
+                    <span class="n">value</span><span class="o">=</span><span class="n">TableState</span><span class="o">.</span><span class="n">search_value</span><span class="p">,</span>
+                    <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Search here...&quot;</span><span class="p">,</span>
+                    <span class="n">size</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">,</span>
+                    <span class="n">max_width</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;150px&quot;</span><span class="p">,</span> <span class="s2">&quot;150px&quot;</span><span class="p">,</span> <span class="s2">&quot;200px&quot;</span><span class="p">,</span> <span class="s2">&quot;250px&quot;</span><span class="p">],</span>
+                    <span class="n">width</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span>
+                    <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;surface&quot;</span><span class="p">,</span>
+                    <span class="n">color_scheme</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span>
+                    <span class="n">on_change</span><span class="o">=</span><span class="n">TableState</span><span class="o">.</span><span class="n">set_search_value</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+                <span class="n">justify</span><span class="o">=</span><span class="s2">&quot;end&quot;</span><span class="p">,</span>
+                <span class="n">spacing</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">button</span><span class="p">(</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="s2">&quot;arrow-down-to-line&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span>
+                <span class="s2">&quot;Export&quot;</span><span class="p">,</span>
+                <span class="n">size</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">,</span>
+                <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;surface&quot;</span><span class="p">,</span>
+                <span class="n">display</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;flex&quot;</span><span class="p">],</span>
+                <span class="n">on_click</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;/items.csv&quot;</span><span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">spacing</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">,</span>
+            <span class="n">justify</span><span class="o">=</span><span class="s2">&quot;between&quot;</span><span class="p">,</span>
+            <span class="n">wrap</span><span class="o">=</span><span class="s2">&quot;wrap&quot;</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span>
+            <span class="n">padding_bottom</span><span class="o">=</span><span class="s2">&quot;1em&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">root</span><span class="p">(</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">header</span><span class="p">(</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">row</span><span class="p">(</span>
+                    <span class="n">_header_cell</span><span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">),</span>
+                    <span class="n">_header_cell</span><span class="p">(</span><span class="s2">&quot;Payment&quot;</span><span class="p">,</span> <span class="s2">&quot;dollar-sign&quot;</span><span class="p">),</span>
+                    <span class="n">_header_cell</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;calendar&quot;</span><span class="p">),</span>
+                    <span class="n">_header_cell</span><span class="p">(</span><span class="s2">&quot;Status&quot;</span><span class="p">,</span> <span class="s2">&quot;notebook-pen&quot;</span><span class="p">),</span>
+                <span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">body</span><span class="p">(</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">foreach</span><span class="p">(</span>
+                    <span class="n">TableState</span><span class="o">.</span><span class="n">get_current_page</span><span class="p">,</span>
+                    <span class="k">lambda</span> <span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">_show_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="p">),</span>
+            <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;surface&quot;</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">_pagination_view</span><span class="p">(),</span>
+        <span class="n">width</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Daniel Kolstad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

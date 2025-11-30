@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dashboard.views.charts &mdash; Lego_BLE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="../../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Lego_BLE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Lego_BLE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dashboard.views.charts</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dashboard.views.charts</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">reflex</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">rx</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">reflex.components.radix.themes.base</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">LiteralAccentColor</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="StatsState">
+<a class="viewcode-back" href="../../../dashboard.views.html#dashboard.views.charts.StatsState">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">StatsState</span><span class="p">(</span><span class="n">rx</span><span class="o">.</span><span class="n">State</span><span class="p">):</span>
+    <span class="n">area_toggle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">selected_tab</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;users&quot;</span>
+    <span class="n">timeframe</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Monthly&quot;</span>
+    <span class="n">users_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">revenue_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">orders_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">device_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">yearly_device_data</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="nd">@rx</span><span class="o">.</span><span class="n">event</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_timeframe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeframe</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@rx</span><span class="o">.</span><span class="n">event</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_selected_tab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tab</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selected_tab</span> <span class="o">=</span> <span class="n">tab</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">tab</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">toggle_areachart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">area_toggle</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">area_toggle</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">randomize_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># If data is already populated, don&#39;t randomize</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">users_data</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># Include today&#39;s data</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">revenue_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+                    <span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">),</span>
+                    <span class="s2">&quot;Revenue&quot;</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">),</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">orders_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+                    <span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">),</span>
+                    <span class="s2">&quot;Orders&quot;</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">users_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+                    <span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">),</span>
+                    <span class="s2">&quot;Users&quot;</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_data</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Desktop&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s2">&quot;fill&quot;</span><span class="p">:</span> <span class="s2">&quot;var(--blue-8)&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mobile&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">47</span><span class="p">,</span> <span class="s2">&quot;fill&quot;</span><span class="p">:</span> <span class="s2">&quot;var(--green-8)&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tablet&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;fill&quot;</span><span class="p">:</span> <span class="s2">&quot;var(--purple-8)&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Other&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;fill&quot;</span><span class="p">:</span> <span class="s2">&quot;var(--red-8)&quot;</span><span class="p">},</span>
+        <span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">yearly_device_data</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Desktop&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span> <span class="s2">&quot;fill&quot;</span><span class="p">:</span> <span class="s2">&quot;var(--blue-8)&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mobile&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">46</span><span class="p">,</span> <span class="s2">&quot;fill&quot;</span><span class="p">:</span> <span class="s2">&quot;var(--green-8)&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tablet&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s2">&quot;fill&quot;</span><span class="p">:</span> <span class="s2">&quot;var(--purple-8)&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Other&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;fill&quot;</span><span class="p">:</span> <span class="s2">&quot;var(--red-8)&quot;</span><span class="p">},</span>
+        <span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="area_toggle">
+<a class="viewcode-back" href="../../../dashboard.views.html#dashboard.views.charts.area_toggle">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">area_toggle</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">rx</span><span class="o">.</span><span class="n">Component</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+        <span class="n">StatsState</span><span class="o">.</span><span class="n">area_toggle</span><span class="p">,</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">icon_button</span><span class="p">(</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="s2">&quot;area-chart&quot;</span><span class="p">),</span>
+            <span class="n">size</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+            <span class="n">cursor</span><span class="o">=</span><span class="s2">&quot;pointer&quot;</span><span class="p">,</span>
+            <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;surface&quot;</span><span class="p">,</span>
+            <span class="n">on_click</span><span class="o">=</span><span class="n">StatsState</span><span class="o">.</span><span class="n">toggle_areachart</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">icon_button</span><span class="p">(</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">icon</span><span class="p">(</span><span class="s2">&quot;bar-chart-3&quot;</span><span class="p">),</span>
+            <span class="n">size</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+            <span class="n">cursor</span><span class="o">=</span><span class="s2">&quot;pointer&quot;</span><span class="p">,</span>
+            <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;surface&quot;</span><span class="p">,</span>
+            <span class="n">on_click</span><span class="o">=</span><span class="n">StatsState</span><span class="o">.</span><span class="n">toggle_areachart</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_create_gradient</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="n">LiteralAccentColor</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">rx</span><span class="o">.</span><span class="n">Component</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">el</span><span class="o">.</span><span class="n">svg</span><span class="o">.</span><span class="n">defs</span><span class="p">(</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">el</span><span class="o">.</span><span class="n">svg</span><span class="o">.</span><span class="n">linear_gradient</span><span class="p">(</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">el</span><span class="o">.</span><span class="n">svg</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span>
+                    <span class="n">stop_color</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">offset</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span> <span class="n">stop_opacity</span><span class="o">=</span><span class="mf">0.8</span>
+                <span class="p">),</span>
+                <span class="n">rx</span><span class="o">.</span><span class="n">el</span><span class="o">.</span><span class="n">svg</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span>
+                    <span class="n">stop_color</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">offset</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span> <span class="n">stop_opacity</span><span class="o">=</span><span class="mi">0</span>
+                <span class="p">),</span>
+                <span class="n">x1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                <span class="n">x2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                <span class="n">y1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                <span class="n">y2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_custom_tooltip</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="n">LiteralAccentColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">rx</span><span class="o">.</span><span class="n">Component</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">graphing_tooltip</span><span class="p">(</span>
+            <span class="n">separator</span><span class="o">=</span><span class="s2">&quot; : &quot;</span><span class="p">,</span>
+            <span class="n">content_style</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;backgroundColor&quot;</span><span class="p">:</span> <span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="s2">&quot;borderRadius&quot;</span><span class="p">:</span> <span class="s2">&quot;var(--radius-2)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;borderWidth&quot;</span><span class="p">:</span> <span class="s2">&quot;1px&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;borderColor&quot;</span><span class="p">:</span> <span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+                <span class="s2">&quot;padding&quot;</span><span class="p">:</span> <span class="s2">&quot;0.5rem&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;boxShadow&quot;</span><span class="p">:</span> <span class="s2">&quot;0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="n">is_animation_active</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="users_chart">
+<a class="viewcode-back" href="../../../dashboard.views.html#dashboard.views.charts.users_chart">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">users_chart</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">rx</span><span class="o">.</span><span class="n">Component</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+        <span class="n">StatsState</span><span class="o">.</span><span class="n">area_toggle</span><span class="p">,</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">area_chart</span><span class="p">(</span>
+            <span class="n">_create_gradient</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;colorBlue&quot;</span><span class="p">),</span>
+            <span class="n">_custom_tooltip</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">cartesian_grid</span><span class="p">(</span>
+                <span class="n">stroke_dasharray</span><span class="o">=</span><span class="s2">&quot;3 3&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">area</span><span class="p">(</span>
+                <span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;Users&quot;</span><span class="p">,</span>
+                <span class="n">stroke</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+                <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;url(#colorBlue)&quot;</span><span class="p">,</span>
+                <span class="n">type_</span><span class="o">=</span><span class="s2">&quot;monotone&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">x_axis</span><span class="p">(</span><span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">y_axis</span><span class="p">(),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">legend</span><span class="p">(),</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">StatsState</span><span class="o">.</span><span class="n">users_data</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">425</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">bar_chart</span><span class="p">(</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">cartesian_grid</span><span class="p">(</span>
+                <span class="n">stroke_dasharray</span><span class="o">=</span><span class="s2">&quot;3 3&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">_custom_tooltip</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+                <span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;Users&quot;</span><span class="p">,</span>
+                <span class="n">stroke</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+                <span class="n">fill</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">x_axis</span><span class="p">(</span><span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">y_axis</span><span class="p">(),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">legend</span><span class="p">(),</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">StatsState</span><span class="o">.</span><span class="n">users_data</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">425</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="revenue_chart">
+<a class="viewcode-back" href="../../../dashboard.views.html#dashboard.views.charts.revenue_chart">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">revenue_chart</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">rx</span><span class="o">.</span><span class="n">Component</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+        <span class="n">StatsState</span><span class="o">.</span><span class="n">area_toggle</span><span class="p">,</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">area_chart</span><span class="p">(</span>
+            <span class="n">_create_gradient</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;colorGreen&quot;</span><span class="p">),</span>
+            <span class="n">_custom_tooltip</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">cartesian_grid</span><span class="p">(</span>
+                <span class="n">stroke_dasharray</span><span class="o">=</span><span class="s2">&quot;3 3&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">area</span><span class="p">(</span>
+                <span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;Revenue&quot;</span><span class="p">,</span>
+                <span class="n">stroke</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+                <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;url(#colorGreen)&quot;</span><span class="p">,</span>
+                <span class="n">type_</span><span class="o">=</span><span class="s2">&quot;monotone&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">x_axis</span><span class="p">(</span><span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">y_axis</span><span class="p">(),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">legend</span><span class="p">(),</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">StatsState</span><span class="o">.</span><span class="n">revenue_data</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">425</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">bar_chart</span><span class="p">(</span>
+            <span class="n">_custom_tooltip</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">cartesian_grid</span><span class="p">(</span>
+                <span class="n">stroke_dasharray</span><span class="o">=</span><span class="s2">&quot;3 3&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+                <span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;Revenue&quot;</span><span class="p">,</span>
+                <span class="n">stroke</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+                <span class="n">fill</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">x_axis</span><span class="p">(</span><span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">y_axis</span><span class="p">(),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">legend</span><span class="p">(),</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">StatsState</span><span class="o">.</span><span class="n">revenue_data</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">425</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="orders_chart">
+<a class="viewcode-back" href="../../../dashboard.views.html#dashboard.views.charts.orders_chart">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">orders_chart</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">rx</span><span class="o">.</span><span class="n">Component</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+        <span class="n">StatsState</span><span class="o">.</span><span class="n">area_toggle</span><span class="p">,</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">area_chart</span><span class="p">(</span>
+            <span class="n">_create_gradient</span><span class="p">(</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="s2">&quot;colorPurple&quot;</span><span class="p">),</span>
+            <span class="n">_custom_tooltip</span><span class="p">(</span><span class="s2">&quot;purple&quot;</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">cartesian_grid</span><span class="p">(</span>
+                <span class="n">stroke_dasharray</span><span class="o">=</span><span class="s2">&quot;3 3&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">area</span><span class="p">(</span>
+                <span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;Orders&quot;</span><span class="p">,</span>
+                <span class="n">stroke</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+                <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;url(#colorPurple)&quot;</span><span class="p">,</span>
+                <span class="n">type_</span><span class="o">=</span><span class="s2">&quot;monotone&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">x_axis</span><span class="p">(</span><span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">y_axis</span><span class="p">(),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">legend</span><span class="p">(),</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">StatsState</span><span class="o">.</span><span class="n">orders_data</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">425</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">bar_chart</span><span class="p">(</span>
+            <span class="n">_custom_tooltip</span><span class="p">(</span><span class="s2">&quot;purple&quot;</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">cartesian_grid</span><span class="p">(</span>
+                <span class="n">stroke_dasharray</span><span class="o">=</span><span class="s2">&quot;3 3&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+                <span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;Orders&quot;</span><span class="p">,</span>
+                <span class="n">stroke</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+                <span class="n">fill</span><span class="o">=</span><span class="n">rx</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">x_axis</span><span class="p">(</span><span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">y_axis</span><span class="p">(),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">legend</span><span class="p">(),</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">StatsState</span><span class="o">.</span><span class="n">orders_data</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">425</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="pie_chart">
+<a class="viewcode-back" href="../../../dashboard.views.html#dashboard.views.charts.pie_chart">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">pie_chart</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">rx</span><span class="o">.</span><span class="n">Component</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">rx</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+        <span class="n">StatsState</span><span class="o">.</span><span class="n">timeframe</span> <span class="o">==</span> <span class="s2">&quot;Yearly&quot;</span><span class="p">,</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">pie_chart</span><span class="p">(</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span>
+                <span class="n">data</span><span class="o">=</span><span class="n">StatsState</span><span class="o">.</span><span class="n">yearly_device_data</span><span class="p">,</span>
+                <span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span>
+                <span class="n">name_key</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                <span class="n">cx</span><span class="o">=</span><span class="s2">&quot;50%&quot;</span><span class="p">,</span>
+                <span class="n">cy</span><span class="o">=</span><span class="s2">&quot;50%&quot;</span><span class="p">,</span>
+                <span class="n">padding_angle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">inner_radius</span><span class="o">=</span><span class="s2">&quot;70&quot;</span><span class="p">,</span>
+                <span class="n">outer_radius</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="p">,</span>
+                <span class="n">label</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">legend</span><span class="p">(),</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">pie_chart</span><span class="p">(</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span>
+                <span class="n">data</span><span class="o">=</span><span class="n">StatsState</span><span class="o">.</span><span class="n">device_data</span><span class="p">,</span>
+                <span class="n">data_key</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span>
+                <span class="n">name_key</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                <span class="n">cx</span><span class="o">=</span><span class="s2">&quot;50%&quot;</span><span class="p">,</span>
+                <span class="n">cy</span><span class="o">=</span><span class="s2">&quot;50%&quot;</span><span class="p">,</span>
+                <span class="n">padding_angle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">inner_radius</span><span class="o">=</span><span class="s2">&quot;70&quot;</span><span class="p">,</span>
+                <span class="n">outer_radius</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="p">,</span>
+                <span class="n">label</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">rx</span><span class="o">.</span><span class="n">recharts</span><span class="o">.</span><span class="n">legend</span><span class="p">(),</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="timeframe_select">
+<a class="viewcode-back" href="../../../dashboard.views.html#dashboard.views.charts.timeframe_select">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">timeframe_select</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">rx</span><span class="o">.</span><span class="n">Component</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">rx</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="p">[</span><span class="s2">&quot;Monthly&quot;</span><span class="p">,</span> <span class="s2">&quot;Yearly&quot;</span><span class="p">],</span>
+        <span class="n">default_value</span><span class="o">=</span><span class="s2">&quot;Monthly&quot;</span><span class="p">,</span>
+        <span class="n">value</span><span class="o">=</span><span class="n">StatsState</span><span class="o">.</span><span class="n">timeframe</span><span class="p">,</span>
+        <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;surface&quot;</span><span class="p">,</span>
+        <span class="n">on_change</span><span class="o">=</span><span class="n">StatsState</span><span class="o">.</span><span class="n">set_timeframe</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Daniel Kolstad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

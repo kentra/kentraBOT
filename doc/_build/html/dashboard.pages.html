@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dashboard.pages package &mdash; Lego_BLE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dashboard.templates package" href="dashboard.templates.html" />
+    <link rel="prev" title="dashboard.components package" href="dashboard.components.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Lego_BLE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app.html">app package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="dashboard.html">dashboard package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dashboard.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dashboard.backend.html">dashboard.backend package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dashboard.components.html">dashboard.components package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">dashboard.pages package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dashboard.templates.html">dashboard.templates package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dashboard.views.html">dashboard.views package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#module-dashboard.dashboard">dashboard.dashboard module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#module-dashboard.styles">dashboard.styles module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#module-dashboard">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rxconfig.html">rxconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html">src package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_example.html">test_example module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Lego_BLE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
+          <li class="breadcrumb-item"><a href="dashboard.html">dashboard package</a></li>
+      <li class="breadcrumb-item active">dashboard.pages package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dashboard.pages.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dashboard-pages-package">
+<h1>dashboard.pages package<a class="headerlink" href="#dashboard-pages-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-dashboard.pages.about">
+<span id="dashboard-pages-about-module"></span><h2>dashboard.pages.about module<a class="headerlink" href="#module-dashboard.pages.about" title="Link to this heading"></a></h2>
+<p>The about page.</p>
+</section>
+<section id="module-dashboard.pages.index">
+<span id="dashboard-pages-index-module"></span><h2>dashboard.pages.index module<a class="headerlink" href="#module-dashboard.pages.index" title="Link to this heading"></a></h2>
+<p>The overview page of the app.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.pages.index.tab_content_header">
+<span class="sig-prename descclassname"><span class="pre">dashboard.pages.index.</span></span><span class="sig-name descname"><span class="pre">tab_content_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Component</span></span></span><a class="reference internal" href="_modules/dashboard/pages/index.html#tab_content_header"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.pages.index.tab_content_header" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-dashboard.pages.profile">
+<span id="dashboard-pages-profile-module"></span><h2>dashboard.pages.profile module<a class="headerlink" href="#module-dashboard.pages.profile" title="Link to this heading"></a></h2>
+<p>The profile page.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="dashboard.pages.profile.Profile">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dashboard.pages.profile.</span></span><span class="sig-name descname"><span class="pre">Profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notifications</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dashboard/pages/profile.html#Profile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.pages.profile.Profile" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.Profile.email">
+<span class="sig-name descname"><span class="pre">email</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#dashboard.pages.profile.Profile.email" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.Profile.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#dashboard.pages.profile.Profile.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.Profile.notifications">
+<span class="sig-name descname"><span class="pre">notifications</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#dashboard.pages.profile.Profile.notifications" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dashboard.pages.profile.</span></span><span class="sig-name descname"><span class="pre">ProfileState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseState</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_substates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_reflex_internal_init</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dashboard/pages/profile.html#ProfileState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dashboard.pages.profile.ProfileState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.backend_vars">
+<span class="sig-name descname"><span class="pre">backend_vars</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">builtins.dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.backend_vars" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.base_vars">
+<span class="sig-name descname"><span class="pre">base_vars</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">builtins.dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Var</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'profile':</span> <span class="pre">Var.__init_subclass__.&lt;locals&gt;.ObjectCastedVar(_js_expr='reflex___state____state__dashboard___pages___profile____profile_state.profile_rx_state_',</span> <span class="pre">_var_type=&lt;class</span> <span class="pre">'dashboard.pages.profile.Profile'&gt;,</span> <span class="pre">_var_data=None,</span> <span class="pre">_original=Var(_js_expr='reflex___state____state__dashboard___pages___profile____profile_state.profile_rx_state_',</span> <span class="pre">_var_type=&lt;class</span> <span class="pre">'dashboard.pages.profile.Profile'&gt;,</span> <span class="pre">_var_data=VarData(state='reflex___state____state.dashboard___pages___profile____profile_state',</span> <span class="pre">field_name='profile',</span> <span class="pre">imports=(('$/utils/context',</span> <span class="pre">(ImportVar(tag='StateContexts',</span> <span class="pre">is_default=False,</span> <span class="pre">alias=None,</span> <span class="pre">install=True,</span> <span class="pre">render=True,</span> <span class="pre">package_path='/'),)),</span> <span class="pre">('react',</span> <span class="pre">(ImportVar(tag='useContext',</span> <span class="pre">is_default=False,</span> <span class="pre">alias=None,</span> <span class="pre">install=True,</span> <span class="pre">render=True,</span> <span class="pre">package_path='/'),))),</span> <span class="pre">hooks=('const</span> <span class="pre">reflex___state____state__dashboard___pages___profile____profile_state</span> <span class="pre">=</span> <span class="pre">useContext(StateContexts.reflex___state____state__dashboard___pages___profile____profile_state)',),</span> <span class="pre">deps=(),</span> <span class="pre">position=None,</span> <span class="pre">components=())))}</span></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.base_vars" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.class_subclasses">
+<span class="sig-name descname"><span class="pre">class_subclasses</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseState</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.class_subclasses" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.computed_vars">
+<span class="sig-name descname"><span class="pre">computed_vars</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">builtins.dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ComputedVar</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.computed_vars" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.event_handlers">
+<span class="sig-name descname"><span class="pre">event_handlers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">builtins.dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">EventHandler</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'handle_submit':</span> <span class="pre">EventHandler(event_actions={},</span> <span class="pre">fn=&lt;function</span> <span class="pre">ProfileState.handle_submit&gt;,</span> <span class="pre">state_full_name='reflex___state____state.dashboard___pages___profile____profile_state'),</span> <span class="pre">'set_profile':</span> <span class="pre">BaseState._create_setter.&lt;locals&gt;.EventHandlerDeprecatedSetter(event_actions={},</span> <span class="pre">fn=&lt;function</span> <span class="pre">set_profile&gt;,</span> <span class="pre">state_full_name='reflex___state____state.dashboard___pages___profile____profile_state'),</span> <span class="pre">'setvar':</span> <span class="pre">EventHandlerSetVar(event_actions={},</span> <span class="pre">fn=&lt;function</span> <span class="pre">EventHandlerSetVar.setvar&gt;,</span> <span class="pre">state_full_name='reflex___state____state.dashboard___pages___profile____profile_state',</span> <span class="pre">state_cls=&lt;class</span> <span class="pre">'dashboard.pages.profile.ProfileState'&gt;),</span> <span class="pre">'toggle_notifications':</span> <span class="pre">EventHandler(event_actions={},</span> <span class="pre">fn=&lt;function</span> <span class="pre">ProfileState.toggle_notifications&gt;,</span> <span class="pre">state_full_name='reflex___state____state.dashboard___pages___profile____profile_state')}</span></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.event_handlers" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.handle_submit">
+<span class="sig-name descname"><span class="pre">handle_submit</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">EventHandler(event_actions={},</span> <span class="pre">fn=&lt;function</span> <span class="pre">ProfileState.handle_submit&gt;,</span> <span class="pre">state_full_name='reflex___state____state.dashboard___pages___profile____profile_state')</span></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.handle_submit" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.inherited_backend_vars">
+<span class="sig-name descname"><span class="pre">inherited_backend_vars</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">builtins.dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.inherited_backend_vars" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.inherited_vars">
+<span class="sig-name descname"><span class="pre">inherited_vars</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">builtins.dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Var</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'is_hydrated':</span> <span class="pre">Var.__init_subclass__.&lt;locals&gt;.BooleanCastedVar(_js_expr='reflex___state____state.is_hydrated_rx_state_',</span> <span class="pre">_var_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">_var_data=None,</span> <span class="pre">_original=Var(_js_expr='reflex___state____state.is_hydrated_rx_state_',</span> <span class="pre">_var_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">_var_data=VarData(state='reflex___state____state',</span> <span class="pre">field_name='is_hydrated',</span> <span class="pre">imports=(('$/utils/context',</span> <span class="pre">(ImportVar(tag='StateContexts',</span> <span class="pre">is_default=False,</span> <span class="pre">alias=None,</span> <span class="pre">install=True,</span> <span class="pre">render=True,</span> <span class="pre">package_path='/'),)),</span> <span class="pre">('react',</span> <span class="pre">(ImportVar(tag='useContext',</span> <span class="pre">is_default=False,</span> <span class="pre">alias=None,</span> <span class="pre">install=True,</span> <span class="pre">render=True,</span> <span class="pre">package_path='/'),))),</span> <span class="pre">hooks=('const</span> <span class="pre">reflex___state____state</span> <span class="pre">=</span> <span class="pre">useContext(StateContexts.reflex___state____state)',),</span> <span class="pre">deps=(),</span> <span class="pre">position=None,</span> <span class="pre">components=()))),</span> <span class="pre">'router':</span> <span class="pre">Var.__init_subclass__.&lt;locals&gt;.ObjectCastedVar(_js_expr='reflex___state____state.router_rx_state_',</span> <span class="pre">_var_type=&lt;class</span> <span class="pre">'reflex.istate.data.RouterData'&gt;,</span> <span class="pre">_var_data=None,</span> <span class="pre">_original=Var(_js_expr='reflex___state____state.router_rx_state_',</span> <span class="pre">_var_type=&lt;class</span> <span class="pre">'reflex.istate.data.RouterData'&gt;,</span> <span class="pre">_var_data=VarData(state='reflex___state____state',</span> <span class="pre">field_name='router',</span> <span class="pre">imports=(('$/utils/context',</span> <span class="pre">(ImportVar(tag='StateContexts',</span> <span class="pre">is_default=False,</span> <span class="pre">alias=None,</span> <span class="pre">install=True,</span> <span class="pre">render=True,</span> <span class="pre">package_path='/'),)),</span> <span class="pre">('react',</span> <span class="pre">(ImportVar(tag='useContext',</span> <span class="pre">is_default=False,</span> <span class="pre">alias=None,</span> <span class="pre">install=True,</span> <span class="pre">render=True,</span> <span class="pre">package_path='/'),))),</span> <span class="pre">hooks=('const</span> <span class="pre">reflex___state____state</span> <span class="pre">=</span> <span class="pre">useContext(StateContexts.reflex___state____state)',),</span> <span class="pre">deps=(),</span> <span class="pre">position=None,</span> <span class="pre">components=())))}</span></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.inherited_vars" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.profile">
+<span class="sig-name descname"><span class="pre">profile</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dashboard.pages.profile.Profile" title="dashboard.pages.profile.Profile"><span class="pre">Profile</span></a></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.profile" title="Link to this definition"></a></dt>
+<dd><p>Base class of converting a var to another var type.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.set_profile">
+<span class="sig-name descname"><span class="pre">set_profile</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">BaseState._create_setter.&lt;locals&gt;.EventHandlerDeprecatedSetter(event_actions={},</span> <span class="pre">fn=&lt;function</span> <span class="pre">set_profile&gt;,</span> <span class="pre">state_full_name='reflex___state____state.dashboard___pages___profile____profile_state')</span></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.set_profile" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.setvar">
+<span class="sig-name descname"><span class="pre">setvar</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">EventHandler</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">EventHandlerSetVar(event_actions={},</span> <span class="pre">fn=&lt;function</span> <span class="pre">EventHandlerSetVar.setvar&gt;,</span> <span class="pre">state_full_name='reflex___state____state.dashboard___pages___profile____profile_state',</span> <span class="pre">state_cls=&lt;class</span> <span class="pre">'dashboard.pages.profile.ProfileState'&gt;)</span></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.setvar" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.toggle_notifications">
+<span class="sig-name descname"><span class="pre">toggle_notifications</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">EventHandler(event_actions={},</span> <span class="pre">fn=&lt;function</span> <span class="pre">ProfileState.toggle_notifications&gt;,</span> <span class="pre">state_full_name='reflex___state____state.dashboard___pages___profile____profile_state')</span></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.toggle_notifications" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dashboard.pages.profile.ProfileState.vars">
+<span class="sig-name descname"><span class="pre">vars</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">builtins.dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Var</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'is_hydrated':</span> <span class="pre">Var.__init_subclass__.&lt;locals&gt;.BooleanCastedVar(_js_expr='reflex___state____state.is_hydrated_rx_state_',</span> <span class="pre">_var_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">_var_data=None,</span> <span class="pre">_original=Var(_js_expr='reflex___state____state.is_hydrated_rx_state_',</span> <span class="pre">_var_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">_var_data=VarData(state='reflex___state____state',</span> <span class="pre">field_name='is_hydrated',</span> <span class="pre">imports=(('$/utils/context',</span> <span class="pre">(ImportVar(tag='StateContexts',</span> <span class="pre">is_default=False,</span> <span class="pre">alias=None,</span> <span class="pre">install=True,</span> <span class="pre">render=True,</span> <span class="pre">package_path='/'),)),</span> <span class="pre">('react',</span> <span class="pre">(ImportVar(tag='useContext',</span> <span class="pre">is_default=False,</span> <span class="pre">alias=None,</span> <span class="pre">install=True,</span> <span class="pre">render=True,</span> <span class="pre">package_path='/'),))),</span> <span class="pre">hooks=('const</span> <span class="pre">reflex___state____state</span> <span class="pre">=</span> <span class="pre">useContext(StateContexts.reflex___state____state)',),</span> <span class="pre">deps=(),</span> <span class="pre">position=None,</span> <span class="pre">components=()))),</span> <span class="pre">'profile':</span> <span class="pre">Var.__init_subclass__.&lt;locals&gt;.ObjectCastedVar(_js_expr='reflex___state____state__dashboard___pages___profile____profile_state.profile_rx_state_',</span> <span class="pre">_var_type=&lt;class</span> <span class="pre">'dashboard.pages.profile.Profile'&gt;,</span> <span class="pre">_var_data=None,</span> <span class="pre">_original=Var(_js_expr='reflex___state____state__dashboard___pages___profile____profile_state.profile_rx_state_',</span> <span class="pre">_var_type=&lt;class</span> <span class="pre">'dashboard.pages.profile.Profile'&gt;,</span> <span class="pre">_var_data=VarData(state='reflex___state____state.dashboard___pages___profile____profile_state',</span> <span class="pre">field_name='profile',</span> <span class="pre">imports=(('$/utils/context',</span> <span class="pre">(ImportVar(tag='StateContexts',</span> <span class="pre">is_default=False,</span> <span class="pre">alias=None,</span> <span class="pre">install=True,</span> <span class="pre">render=True,</span> <span class="pre">package_path='/'),)),</span> <span class="pre">('react',</span> <span class="pre">(ImportVar(tag='useContext',</span> <span class="pre">is_default=False,</span> <span class="pre">alias=None,</span> <span class="pre">install=True,</span> <span class="pre">render=True,</span> <span class="pre">package_path='/'),))),</span> <span class="pre">hooks=('const</span> <span class="pre">reflex___state____state__dashboard___pages___profile____profile_state</span> <span class="pre">=</span> <span class="pre">useContext(StateContexts.reflex___state____state__dashboard___pages___profile____profile_state)',),</span> <span class="pre">deps=(),</span> <span class="pre">position=None,</span> <span class="pre">components=()))),</span> <span class="pre">'router':</span> <span class="pre">Var.__init_subclass__.&lt;locals&gt;.ObjectCastedVar(_js_expr='reflex___state____state.router_rx_state_',</span> <span class="pre">_var_type=&lt;class</span> <span class="pre">'reflex.istate.data.RouterData'&gt;,</span> <span class="pre">_var_data=None,</span> <span class="pre">_original=Var(_js_expr='reflex___state____state.router_rx_state_',</span> <span class="pre">_var_type=&lt;class</span> <span class="pre">'reflex.istate.data.RouterData'&gt;,</span> <span class="pre">_var_data=VarData(state='reflex___state____state',</span> <span class="pre">field_name='router',</span> <span class="pre">imports=(('$/utils/context',</span> <span class="pre">(ImportVar(tag='StateContexts',</span> <span class="pre">is_default=False,</span> <span class="pre">alias=None,</span> <span class="pre">install=True,</span> <span class="pre">render=True,</span> <span class="pre">package_path='/'),)),</span> <span class="pre">('react',</span> <span class="pre">(ImportVar(tag='useContext',</span> <span class="pre">is_default=False,</span> <span class="pre">alias=None,</span> <span class="pre">install=True,</span> <span class="pre">render=True,</span> <span class="pre">package_path='/'),))),</span> <span class="pre">hooks=('const</span> <span class="pre">reflex___state____state</span> <span class="pre">=</span> <span class="pre">useContext(StateContexts.reflex___state____state)',),</span> <span class="pre">deps=(),</span> <span class="pre">position=None,</span> <span class="pre">components=())))}</span></em><a class="headerlink" href="#dashboard.pages.profile.ProfileState.vars" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-dashboard.pages.settings">
+<span id="dashboard-pages-settings-module"></span><h2>dashboard.pages.settings module<a class="headerlink" href="#module-dashboard.pages.settings" title="Link to this heading"></a></h2>
+<p>The settings page.</p>
+</section>
+<section id="module-dashboard.pages.table">
+<span id="dashboard-pages-table-module"></span><h2>dashboard.pages.table module<a class="headerlink" href="#module-dashboard.pages.table" title="Link to this heading"></a></h2>
+<p>The table page.</p>
+</section>
+<section id="module-dashboard.pages">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dashboard.pages" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.pages.about">
+<span class="sig-prename descclassname"><span class="pre">dashboard.pages.</span></span><span class="sig-name descname"><span class="pre">about</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard.pages.about" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.pages.index">
+<span class="sig-prename descclassname"><span class="pre">dashboard.pages.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard.pages.index" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.pages.profile">
+<span class="sig-prename descclassname"><span class="pre">dashboard.pages.</span></span><span class="sig-name descname"><span class="pre">profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard.pages.profile" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.pages.settings">
+<span class="sig-prename descclassname"><span class="pre">dashboard.pages.</span></span><span class="sig-name descname"><span class="pre">settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard.pages.settings" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboard.pages.table">
+<span class="sig-prename descclassname"><span class="pre">dashboard.pages.</span></span><span class="sig-name descname"><span class="pre">table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dashboard.pages.table" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dashboard.components.html" class="btn btn-neutral float-left" title="dashboard.components package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dashboard.templates.html" class="btn btn-neutral float-right" title="dashboard.templates package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Daniel Kolstad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
