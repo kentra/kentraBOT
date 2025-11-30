@@ -165,10 +165,10 @@ def configuration_page() -> rx.Component:
                             style={
                                 "backgroundColor": ThemeState.accent_color,
                                 "color": rx.cond(
-                                    ThemeState.is_contrast, "black", "#212B38"
+                                    ThemeState.is_contrast, "black", "#212B38",
                                 ),
                                 "border": rx.cond(
-                                    ThemeState.is_contrast, "2px solid white", "none"
+                                    ThemeState.is_contrast, "2px solid white", "none",
                                 ),
                             },
                         ),

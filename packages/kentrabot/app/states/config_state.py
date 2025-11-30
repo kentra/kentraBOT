@@ -1,8 +1,9 @@
-import reflex as rx
 import json
 import logging
-from typing import Optional
+
+import reflex as rx
 from pydantic import BaseModel
+
 from app.states.log_state import LogState
 
 
@@ -51,7 +52,6 @@ class ConfigState(rx.State):
             self.has_unsaved_changes = True
         except ValueError as e:
             logging.exception(f"Error: {e}")
-            pass
 
     @rx.event
     def set_pid_p(self, value: int):
@@ -60,7 +60,6 @@ class ConfigState(rx.State):
             self.has_unsaved_changes = True
         except ValueError as e:
             logging.exception(f"Error: {e}")
-            pass
 
     @rx.event
     def set_pid_i(self, value: int):
@@ -69,7 +68,6 @@ class ConfigState(rx.State):
             self.has_unsaved_changes = True
         except ValueError as e:
             logging.exception(f"Error: {e}")
-            pass
 
     @rx.event
     def set_pid_d(self, value: int):
@@ -78,7 +76,6 @@ class ConfigState(rx.State):
             self.has_unsaved_changes = True
         except ValueError as e:
             logging.exception(f"Error: {e}")
-            pass
 
     @rx.event
     def set_calibration_offset(self, value: int):
@@ -87,7 +84,6 @@ class ConfigState(rx.State):
             self.has_unsaved_changes = True
         except ValueError as e:
             logging.exception(f"Error: {e}")
-            pass
 
     @rx.event
     async def save_config(self):
@@ -110,7 +106,9 @@ class ConfigState(rx.State):
             self.has_unsaved_changes = False
             logs = await self.get_state(LogState)
             logs.add_log(
-                "info", "Config", "Configuration updated and saved successfully."
+                "info",
+                "Config",
+                "Configuration updated and saved successfully.",
             )
             yield rx.toast("Configuration saved successfully.", duration=3000)
         except Exception as e:
@@ -129,6 +127,8 @@ class ConfigState(rx.State):
         self.has_unsaved_changes = True
         logs = await self.get_state(LogState)
         logs.add_log(
-            "warning", "Config", "Configuration values reset to defaults (unsaved)."
+            "warning",
+            "Config",
+            "Configuration values reset to defaults (unsaved).",
         )
         yield rx.toast("Values reset to defaults. Click Save to apply.", duration=3000)

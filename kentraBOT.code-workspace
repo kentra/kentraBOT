@@ -7,10 +7,10 @@
 	"settings": {
 		"python.defaultInterpreterPath": "./venv/bin/python",
 		"ruff.interpreter": [
-			"./venv/bin/python"
+			"/Users/daniko/Documents/Code/Python/kentraBOT/.venv/bin/python"
 		],
 		"ty.interpreter": [
-			"./venv/bin/python"
+			"./venv/bin/Users/daniko/Documents/Code/Python/kentraBOT/.venv/bin/python"
 		]
 	}
 }

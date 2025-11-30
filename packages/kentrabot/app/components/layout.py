@@ -27,7 +27,7 @@ def mobile_header(page_title: str) -> rx.Component:
 
 
 def main_layout(
-    page_content: rx.Component, page_title: str = "Dashboard"
+    page_content: rx.Component, page_title: str = "Dashboard",
 ) -> rx.Component:
     """The main layout wrapper implementing the 3-column structure."""
     return rx.el.div(

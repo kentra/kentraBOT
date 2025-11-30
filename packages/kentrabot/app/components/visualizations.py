@@ -1,12 +1,29 @@
 import reflex as rx
+
 from app.states.telemetry_state import TelemetryState
 from app.states.theme_state import ThemeState
 
 
 def circular_gauge(
-    value: int, max_val: int, label: str, unit: str, color_hex: str
+    value: int,
+    max_val: int,
+    label: str,
+    unit: str,
+    color_hex: str,
 ) -> rx.Component:
-    """A reusable circular gauge component using SVG."""
+    """A reusable circular gauge component using SVG.
+
+    Args:
+        value (int): _description_
+        max_val (int): _description_
+        label (str): _description_
+        unit (str): _description_
+        color_hex (str): _description_
+
+    Returns:
+        rx.Component: _description_
+
+    """
     radius = 36
     circumference = 2 * 3.14159 * radius
     offset_var = circumference * (1 - value / max_val)
@@ -127,7 +144,9 @@ def memory_useage() -> rx.Component:
         ),
         rx.el.div(
             rx.el.span(
-                "0%", class_name="text-xs", style={"color": ThemeState.text_secondary}
+                "0%",
+                class_name="text-xs",
+                style={"color": ThemeState.text_secondary},
             ),
             rx.el.span(
                 "MEMORIIIII",
@@ -135,7 +154,9 @@ def memory_useage() -> rx.Component:
                 style={"color": ThemeState.accent_color},
             ),
             rx.el.span(
-                "100%", class_name="text-xs", style={"color": ThemeState.text_secondary}
+                "100%",
+                class_name="text-xs",
+                style={"color": ThemeState.text_secondary},
             ),
             class_name="flex justify-between mt-1",
         ),
@@ -157,7 +178,7 @@ def system_health_indicator() -> rx.Component:
                     ("Optimal", ThemeState.success_color),
                     ("Warning", ThemeState.warning_color),
                     ThemeState.error_color,
-                )
+                ),
             },
         ),
         rx.el.span(
@@ -174,7 +195,7 @@ def system_health_indicator() -> rx.Component:
                     ("Optimal", ThemeState.success_color),
                     ("Warning", ThemeState.warning_color),
                     ThemeState.error_color,
-                )
+                ),
             },
         ),
         class_name="flex items-center px-4 py-2 rounded-full shadow-sm transition-colors duration-300",
@@ -182,7 +203,7 @@ def system_health_indicator() -> rx.Component:
     )
 
 
-def line_graph():
+def line_graph() -> rx.Component:
     data = [
         {"name": "RockChip", "cpu_usage": 53, "pv": 4300, "amt": 2100},
         {"name": "RockChip", "cpu_usage": 7, "pv": 4300, "amt": 2100},

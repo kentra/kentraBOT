@@ -4,6 +4,9 @@ import random
 import psutil
 import reflex as rx
 
+from app.states.control_state import ControlState
+from app.states.log_state import LogState
+
 
 class TelemetryState(rx.State):
     """State to handle real-time telemetry simulation."""
@@ -52,15 +55,14 @@ class TelemetryState(rx.State):
         if not self._is_running:
             self._is_running = True
             return TelemetryState.update_telemetry
+        return None
 
     @rx.event(background=True)
-    async def update_telemetry(self):
+    async def update_telemetry(self) -> None:
         while True:
             async with self:
                 if not self._is_running:
                     break
-                from app.states.control_state import ControlState
-                from app.states.log_state import LogState
 
                 control = await self.get_state(ControlState)
                 target = control.target_speed if control.is_motor_running else 0
@@ -70,10 +72,10 @@ class TelemetryState(rx.State):
                     self.belt_speed = max(target, self.belt_speed - 25)
                 if self.belt_speed > 0:
                     self.belt_speed = int(
-                        max(0, self.belt_speed + random.randint(-2, 2))
+                        max(0, self.belt_speed + random.randint(-2, 2)),
                     )
                 self.motor_temp = int(
-                    max(20, min(95, self.motor_temp + random.randint(-1, 2)))
+                    max(20, min(95, self.motor_temp + random.randint(-1, 2))),
                 )
 
                 #  Memory poll
@@ -87,7 +89,8 @@ class TelemetryState(rx.State):
 
                 base_current = 1.0 + self.belt_speed * 0.01
                 self.current_draw = max(
-                    0.5, min(8.0, base_current + random.uniform(-0.1, 0.1))
+                    0.5,
+                    min(8.0, base_current + random.uniform(-0.1, 0.1)),
                 )
                 self.uptime_seconds += 2
                 if (

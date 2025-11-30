@@ -12,7 +12,7 @@ class HubControl:
     def __build_packet(
         self,
         motor_speed: MotorSpeed = MotorSpeed(
-            speed_a=0, speed_b=0, speed_c=0, speed_d=0
+            speed_a=0, speed_b=0, speed_c=0, speed_d=0,
         ),
     ) -> bytes:
         # Calculate Checksum
@@ -38,7 +38,7 @@ class HubControl:
                 motor_speed.speed_c[-1],  # type: ignore
                 motor_speed.speed_d[-1],  # type: ignore
                 checksum,
-            ]
+            ],
         )
 
     async def connect(self) -> None:
@@ -48,20 +48,20 @@ class HubControl:
             print("# ✅ Connected!")
             # Stopping first (sending 0x00)...
             await client.write_gatt_char(
-                self.cfg.WRITE_CHAR_UUID, data=self.__build_packet()
+                self.cfg.WRITE_CHAR_UUID, data=self.__build_packet(),
             )
             await asyncio.sleep(delay=1)
 
     async def locate_device(self) -> None:
         await BleakScanner.find_device_by_address(
-            device_identifier=self.cfg.DEVICE_UUID, timeout=10.0
+            device_identifier=self.cfg.DEVICE_UUID, timeout=10.0,
         )
         await asyncio.sleep(delay=0.1)
 
     async def run_smooth(
         self,
         motor_speed: MotorSpeed = MotorSpeed(
-            speed_a=0, speed_b=0, speed_c=0, speed_d=0
+            speed_a=0, speed_b=0, speed_c=0, speed_d=0,
         ),
         delay: float = 0.1,
     ) -> None:
@@ -80,8 +80,8 @@ class HubControl:
                     char_specifier=self.cfg.WRITE_CHAR_UUID,
                     data=self.__build_packet(
                         motor_speed=MotorSpeed(
-                            speed_a=s, speed_b=0, speed_c=0, speed_d=0
-                        )
+                            speed_a=s, speed_b=0, speed_c=0, speed_d=0,
+                        ),
                     ),
                 )
                 await asyncio.sleep(delay=delay)
@@ -89,7 +89,7 @@ class HubControl:
     async def run(
         self,
         motor_speed: MotorSpeed = MotorSpeed(
-            speed_a=0, speed_b=0, speed_c=0, speed_d=0
+            speed_a=0, speed_b=0, speed_c=0, speed_d=0,
         ),
         duration: float = 0.1,
     ) -> None:

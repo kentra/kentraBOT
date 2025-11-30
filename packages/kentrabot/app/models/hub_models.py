@@ -1,6 +1,5 @@
-from pydantic import BaseModel, BeforeValidator, field_validator, Field
-from typing import Optional, Any, Annotated, cast, Union
-from pydantic_core.core_schema import ValidationInfo
+from pydantic import BaseModel, BeforeValidator, Field
+from typing import Optional, Any, Annotated, Union
 from app.models.config import AppConfig
 
 cfg: AppConfig = AppConfig()  # type: ignore
@@ -43,16 +42,16 @@ def map_signed(percent: Any) -> tuple[int, int]:
 class MotorSpeed(BaseModel):
     # tuple[percentage, scaled]
     speed_a: Annotated[
-        Optional[Union[tuple[int, int], int]], BeforeValidator(func=map_signed)
+        Optional[Union[tuple[int, int], int]], BeforeValidator(func=map_signed),
     ] = Field(union_mode="left_to_right")
     speed_b: Annotated[
-        Optional[Union[tuple[int, int], int]], BeforeValidator(func=map_signed)
+        Optional[Union[tuple[int, int], int]], BeforeValidator(func=map_signed),
     ] = Field(union_mode="left_to_right")
     speed_c: Annotated[
-        Optional[Union[tuple[int, int], int]], BeforeValidator(func=map_signed)
+        Optional[Union[tuple[int, int], int]], BeforeValidator(func=map_signed),
     ] = Field(union_mode="left_to_right")
     speed_d: Annotated[
-        Optional[Union[tuple[int, int], int]], BeforeValidator(func=map_signed)
+        Optional[Union[tuple[int, int], int]], BeforeValidator(func=map_signed),
     ] = Field(union_mode="left_to_right")
     # speed_a: Annotated[Optional[Union[tuple[int, int]], int], BeforeValidator(func=map_signed)] =  Field(union_mode='left_to_right')
     # speed_b: Annotated[Optional[Union[tuple[int, int]], int], BeforeValidator(func=map_signed)] =  Field(union_mode='left_to_right')

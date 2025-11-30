@@ -1,16 +1,21 @@
 import reflex as rx
+
 from app.components.layout import main_layout
-from app.states.telemetry_state import TelemetryState
-from app.states.theme_state import ThemeState
 from app.components.visualizations import (
     line_graph,
     memory_useage,
     system_health_indicator,
 )
+from app.states.telemetry_state import TelemetryState
+from app.states.theme_state import ThemeState
 
 
 def status_card(
-    title: str, value: str, icon: str, trend: str | None = None, trend_up: bool = True
+    title: str,
+    value: str,
+    icon: str,
+    trend: str | None = None,
+    trend_up: bool = True,
 ) -> rx.Component:
     return rx.el.div(
         rx.el.div(
@@ -48,7 +53,7 @@ def status_card(
                             trend_up,
                             ThemeState.accent_color_secondary,
                             ThemeState.error_color,
-                        )
+                        ),
                     },
                 ),
                 rx.el.span(

@@ -28,7 +28,7 @@ def log_item(entry: LogEntry) -> rx.Component:
 def status_panel_item(label: str, value: str) -> rx.Component:
     return rx.el.div(
         rx.el.span(
-            label, class_name="text-sm", style={"color": ThemeState.text_secondary}
+            label, class_name="text-sm", style={"color": ThemeState.text_secondary},
         ),
         rx.el.span(
             value,
@@ -72,7 +72,7 @@ def status_panel() -> rx.Component:
                             ("Optimal", ThemeState.success_color),
                             ("Warning", ThemeState.warning_color),
                             ThemeState.error_color,
-                        )
+                        ),
                     },
                 ),
                 class_name="flex items-center justify-between p-4 border-b",
@@ -92,7 +92,7 @@ def status_panel() -> rx.Component:
                     status_panel_item("Speed", f"{TelemetryState.belt_speed} RPM"),
                     status_panel_item("Temp", f"{TelemetryState.motor_temp}°C"),
                     status_panel_item(
-                        "Current", f"{TelemetryState.current_draw:.1f} A"
+                        "Current", f"{TelemetryState.current_draw:.1f} A",
                     ),
                     class_name="mb-6 p-4 rounded-xl shadow-sm transition-colors duration-300",
                     style={

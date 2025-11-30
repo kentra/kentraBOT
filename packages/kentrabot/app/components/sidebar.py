@@ -1,7 +1,8 @@
 import reflex as rx
+
 from app.components.nav_item import nav_item
-from app.states.ui_state import UIState
 from app.states.theme_state import ThemeState
+from app.states.ui_state import UIState
 
 
 def theme_button(icon: str, mode: str, on_click: rx.event.EventType) -> rx.Component:
@@ -68,7 +69,9 @@ def sidebar() -> rx.Component:
                         theme_button("moon", "dark", ThemeState.set_dark_mode),
                         theme_button("sun", "light", ThemeState.set_light_mode),
                         theme_button(
-                            "biohazard", "contrast", ThemeState.set_contrast_mode
+                            "biohazard",
+                            "contrast",
+                            ThemeState.set_contrast_mode,
                         ),
                         class_name="flex gap-2 mb-6",
                     ),

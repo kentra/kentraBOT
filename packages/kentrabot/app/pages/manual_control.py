@@ -1,11 +1,15 @@
 import reflex as rx
+
 from app.components.layout import main_layout
 from app.states.control_state import ControlState
 from app.states.theme_state import ThemeState
 
 
 def key_button(
-    label: str, key_code: str, icon: str = None, wide: bool = False
+    label: str,
+    key_code: str,
+    icon: str | None = None,
+    wide: bool = False,
 ) -> rx.Component:
     """A visual keyboard key component."""
     is_pressed = ControlState.active_keys[key_code]
@@ -65,7 +69,7 @@ def webcam_feed() -> rx.Component:
                         ControlState.camera_connected,
                         "w-3 h-3 rounded-full bg-red-500 animate-pulse mr-2",
                         "hidden",
-                    )
+                    ),
                 ),
                 rx.el.span(
                     rx.cond(ControlState.camera_connected, "LIVE", "OFFLINE"),
@@ -111,17 +115,17 @@ def webcam_feed() -> rx.Component:
             ),
             rx.el.div(
                 rx.el.div(
-                    class_name="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-white/30 rounded-full"
+                    class_name="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-white/30 rounded-full",
                 ),
                 rx.el.div(
                     class_name="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 rounded-full",
                     style={"backgroundColor": ThemeState.accent_color},
                 ),
                 rx.el.div(
-                    class_name="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10"
+                    class_name="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10",
                 ),
                 rx.el.div(
-                    class_name="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/10"
+                    class_name="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/10",
                 ),
                 class_name="absolute inset-0 pointer-events-none",
             ),
@@ -158,7 +162,7 @@ def webcam_feed() -> rx.Component:
                         ControlState.camera_connected,
                         ThemeState.success_color,
                         ThemeState.error_color,
-                    )
+                    ),
                 },
             ),
             class_name="flex justify-between items-center mt-3 px-1",
@@ -217,7 +221,8 @@ def estop_overlay() -> rx.Component:
         rx.el.div(
             rx.el.div(
                 rx.icon(
-                    "flag_triangle_right", class_name="w-24 h-24 text-red-500 mb-6"
+                    "flag_triangle_right",
+                    class_name="w-24 h-24 text-red-500 mb-6",
                 ),
                 rx.el.h3(
                     "SYSTEM HALTED",
@@ -262,13 +267,16 @@ def manual_control_page() -> rx.Component:
                     ),
                     rx.el.div(
                         drone_telemetry_item(
-                            "Altitude", f"{ControlState.drone_altitude:.1f}m"
+                            "Altitude",
+                            f"{ControlState.drone_altitude:.1f}m",
                         ),
                         drone_telemetry_item(
-                            "Speed", f"{ControlState.target_speed} RPM"
+                            "Speed",
+                            f"{ControlState.target_speed} RPM",
                         ),
                         drone_telemetry_item(
-                            "Heading", f"{ControlState.drone_heading}°"
+                            "Heading",
+                            f"{ControlState.drone_heading}°",
                         ),
                         class_name="grid grid-cols-3 gap-4 mt-4",
                     ),
