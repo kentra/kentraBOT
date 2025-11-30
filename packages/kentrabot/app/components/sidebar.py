@@ -51,7 +51,7 @@ def sidebar() -> rx.Component:
                     nav_item("System Status", "layout-dashboard", "/"),
                     nav_item("Manual Control", "gamepad-2", "/manual"),
                     nav_item("Configuration", "settings-2", "/config"),
-                    nav_item("Temp Page", "temp_page-2", "/temp_page"),
+                    nav_item("Temp Page", "package", "/temp_page"),
                     nav_item("System Logs", "file-text", "/logs"),
                     class_name="px-4 py-4 space-y-1",
                 ),

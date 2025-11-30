@@ -1,8 +1,10 @@
 import reflex as rx
 from datetime import datetime
+from pydantic import BaseModel
 
 
-class LogEntry(rx.Base):
+
+class LogEntry(BaseModel):
     id: int
     timestamp: str
     severity: str

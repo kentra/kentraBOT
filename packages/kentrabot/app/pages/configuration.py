@@ -74,7 +74,7 @@ def configuration_page() -> rx.Component:
                                 on_change=ConfigState.set_max_speed,
                                 class_name="w-full px-4 py-2 rounded-lg outline-none transition-all border focus:ring-1 focus:ring-current",
                                 style=input_style,
-                                default_value=ConfigState.max_speed.to_string(),
+                                default_value=ConfigState.max_speed,
                             ),
                         ),
                         form_field(

@@ -3,16 +3,14 @@ from app.components.layout import main_layout
 from app.states.telemetry_state import TelemetryState
 from app.states.theme_state import ThemeState
 from app.components.visualizations import (
-    temp_gauge,
     line_graph,
     memory_useage,
     system_health_indicator,
 )
-from app.components.map import default_map
 
 
 def status_card(
-    title: str, value: str, icon: str, trend: str = None, trend_up: bool = True
+    title: str, value: str, icon: str, trend: str | None = None, trend_up: bool = True
 ) -> rx.Component:
     return rx.el.div(
         rx.el.div(
@@ -30,7 +28,9 @@ def status_card(
             ),
             rx.el.div(
                 rx.icon(
-                    icon, class_name="w-6 h-6", style={"color": ThemeState.accent_color}
+                    icon,
+                    class_name="w-6 h-6",
+                    style={"color": ThemeState.accent_color_third},
                 ),
                 class_name="p-3 rounded-lg transition-colors duration-300",
                 style={"backgroundColor": ThemeState.bg_color},
@@ -38,14 +38,16 @@ def status_card(
             class_name="flex justify-between items-start",
         ),
         rx.cond(
-            trend != None,
+            trend is not None,
             rx.el.div(
                 rx.el.span(
                     trend,
                     class_name="text-xs font-medium flex items-center mt-4",
                     style={
                         "color": rx.cond(
-                            trend_up, ThemeState.accent_color, ThemeState.error_color
+                            trend_up,
+                            ThemeState.accent_color_secondary,
+                            ThemeState.error_color,
                         )
                     },
                 ),
@@ -91,7 +93,7 @@ def system_status_page() -> rx.Component:
                     "-1.2% Usage",
                     True,
                 ),
-                status_card("Uptime", TelemetryState.uptime_formatted, "clock"),
+                status_card("Uptime", str(TelemetryState.uptime_formatted), "clock"),
                 class_name="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8",
             ),
             rx.el.div(
@@ -108,7 +110,7 @@ def system_status_page() -> rx.Component:
                     rx.el.div(
                         rx.el.div(
                             rx.el.h4(
-                                "CPU Temperature",
+                                "CPU Usage (%)",
                                 class_name="text-sm font-medium mb-6",
                                 style={"color": ThemeState.text_secondary},
                             ),
@@ -123,11 +125,11 @@ def system_status_page() -> rx.Component:
                         ),
                         rx.el.div(
                             rx.el.div(
-                                rx.el.h4(
-                                    "CPU Load",
-                                    class_name="text-sm font-medium mb-4",
-                                    style={"color": ThemeState.text_secondary},
-                                ),
+                                # rx.el.h4(
+                                #     "CPU Load",
+                                #     class_name="text-sm font-medium mb-4",
+                                #     style={"color": ThemeState.text_secondary},
+                                # ),
                                 memory_useage(),
                                 class_name="mb-8",
                             ),

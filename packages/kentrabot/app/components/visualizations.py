@@ -74,7 +74,7 @@ def temp_gauge() -> rx.Component:
                 ThemeState.warning_color,
                 ThemeState.accent_color,
             ),
-        ),
+        ),  # type: ignore
     )
 
 
@@ -87,8 +87,8 @@ def memory_useage() -> rx.Component:
                 style={"color": ThemeState.text_secondary},
             ),
             rx.el.span(
-                rx.el.span(TelemetryState.memory_usage.to_string()),
-                " MB",
+                rx.el.span(TelemetryState.memory_usage),
+                " %",
                 class_name="text-lg font-bold",
                 style={"color": ThemeState.text_primary},
             ),
@@ -113,10 +113,11 @@ def memory_useage() -> rx.Component:
             rx.el.div(
                 class_name="absolute top-0 bottom-0 rounded-full transition-all duration-500 shadow-sm",
                 style={
-                    "width": TelemetryState.tension_pct,
+                    # "width": TelemetryState.tension_pct,
+                    "width": TelemetryState.memory_usage,
                     "backgroundColor": rx.cond(
-                        (TelemetryState.memory_usage < 400)
-                        | (TelemetryState.memory_usage > 550),
+                        (TelemetryState.memory_usage < 50)
+                        | (TelemetryState.memory_usage > 100),
                         ThemeState.error_color,
                         ThemeState.accent_color,
                     ),
@@ -126,15 +127,15 @@ def memory_useage() -> rx.Component:
         ),
         rx.el.div(
             rx.el.span(
-                "0GB", class_name="text-xs", style={"color": ThemeState.text_secondary}
+                "0%", class_name="text-xs", style={"color": ThemeState.text_secondary}
             ),
             rx.el.span(
-                "Optimal Range (1GB)",
+                "MEMORIIIII",
                 class_name="text-xs font-medium",
                 style={"color": ThemeState.accent_color},
             ),
             rx.el.span(
-                "2GB", class_name="text-xs", style={"color": ThemeState.text_secondary}
+                "100%", class_name="text-xs", style={"color": ThemeState.text_secondary}
             ),
             class_name="flex justify-between mt-1",
         ),
@@ -210,89 +211,37 @@ def line_graph():
         {"name": "RockChip", "cpu_usage": 75, "pv": 4300, "amt": 2100},
         {"name": "RockChip", "cpu_usage": 20, "pv": 4300, "amt": 2100},
         {"name": "RockChip", "cpu_usage": 45, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 61, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 87, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 37, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 30, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 32, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 50, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 15, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 54, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 77, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 80, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 11, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 49, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 26, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 50, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 49, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 81, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 43, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 84, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 70, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 79, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 29, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 11, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 86, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 9, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 78, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 69, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 61, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 67, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 69, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 51, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 94, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 20, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 89, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 83, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 89, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 33, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 45, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 8, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 46, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 30, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 62, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 66, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 68, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 46, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 38, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 30, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 45, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 20, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 4, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 85, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 49, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 72, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 17, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 18, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 89, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 86, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 87, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 64, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 97, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 25, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 49, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 90, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 11, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 75, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 55, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 17, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 13, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 80, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 19, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 51, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 35, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 14, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 22, "pv": 4300, "amt": 2100},
-        {"name": "RockChip", "cpu_usage": 88, "pv": 4300, "amt": 2100},
     ]
 
-    return rx.recharts.line_chart(
-        rx.recharts.line(
+    # return rx.recharts.line_chart(
+    #     rx.recharts.line(
+    #         data_key="cpu_usage",
+    #         type_="monotone",
+    #         # stroke="#ff0000",
+    #         stroke=ThemeState.accent_color,
+    #         unit="%",
+    #         dot=False
+    #     ),
+    #     rx.recharts.x_axis(data_key="name"),
+    #     rx.recharts.y_axis(),
+    #     rx.recharts.cartesian_grid(stroke_dasharray="3 3"),
+    #     rx.recharts.graphing_tooltip(),
+    #     rx.recharts.legend(),
+    #     data=data,
+    #     width="100%",
+    #     height=300,
+    return rx.recharts.area_chart(
+        rx.recharts.area(
             data_key="cpu_usage",
+            stroke=ThemeState.accent_color_secondary,
+            fill=ThemeState.accent_color_third,
+            stack_id="1",
         ),
-        rx.recharts.x_axis(data_key="name"),
+        rx.recharts.x_axis(),
         rx.recharts.y_axis(),
         data=data,
+        stack_offset="none",
+        margin={"top": 0, "right": 0, "bottom": 0, "left": 0},
         width="100%",
         height=300,
     )

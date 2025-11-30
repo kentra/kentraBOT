@@ -1,15 +1,17 @@
-import reflex as rx
 import asyncio
 import random
+
+import psutil
+import reflex as rx
 
 
 class TelemetryState(rx.State):
     """State to handle real-time telemetry simulation."""
 
-    motor_temp: int = 42
+    motor_temp: int = 0
     belt_speed: int = 0
-    memory_usage: float = 450.0
-    current_draw: float = 2.4
+    memory_usage: float = 0.0
+    current_draw: float = 0.0
     system_health: str = "Optimal"
     previous_health: str = "Optimal"
     uptime_seconds: int = 45600
@@ -73,10 +75,16 @@ class TelemetryState(rx.State):
                 self.motor_temp = int(
                     max(20, min(95, self.motor_temp + random.randint(-1, 2)))
                 )
-                base_tension = 450 + self.belt_speed * 0.2
-                self.memory_usage = max(
-                    300, min(600, base_tension + random.uniform(-10, 10))
-                )
+
+                #  Memory poll
+                # base_tension = 450 + self.belt_speed * 0.2
+                # self.memory_usage = max(
+                #     300, min(600, base_tension + random.uniform(-10, 10))
+                # )
+                process_mon = psutil.Process()
+                # self.memory_usage = 100.0 - round(process_mon.memory_percent(), 1)
+                self.memory_usage = round(process_mon.memory_percent(), 1)
+
                 base_current = 1.0 + self.belt_speed * 0.01
                 self.current_draw = max(
                     0.5, min(8.0, base_current + random.uniform(-0.1, 0.1))
@@ -108,7 +116,7 @@ class TelemetryState(rx.State):
                         log_state.add_log(
                             "warning",
                             "System",
-                            f"System warning detected. Parameters deviating from optimal.",
+                            "System warning detected. Parameters deviating from optimal.",
                         )
                     elif (
                         self.system_health == "Optimal"
@@ -120,4 +128,4 @@ class TelemetryState(rx.State):
                             "System parameters stabilized. Health is Optimal.",
                         )
                     self.previous_health = self.system_health
-            await asyncio.sleep(2)
+            await asyncio.sleep(0.5)

@@ -21,7 +21,7 @@ class ThemeState(rx.State):
         if self.theme_mode == "light":
             return "#F9FAFB"
         if self.theme_mode == "contrast":
-            return "#0A1026"
+            return "#121525"
         return "#212B38"
 
     @rx.var
@@ -29,7 +29,7 @@ class ThemeState(rx.State):
         if self.theme_mode == "light":
             return "#FFFFFF"
         if self.theme_mode == "contrast":
-            return "#0E1737"
+            return "#171B2C"
         return "#37465B"
 
     @rx.var
@@ -53,7 +53,33 @@ class ThemeState(rx.State):
         if self.theme_mode == "light":
             return "#0D9488"
         if self.theme_mode == "contrast":
-            return "#E37AFB"
+            return "#E84C93"
+        return "#08C6AB"
+
+    @rx.var
+    def accent_color_secondary(self) -> str:
+        if self.theme_mode == "light":
+            return "#0D9488"
+        if self.theme_mode == "contrast":
+            # return "#6AD6C5"
+            return "#F4B946"
+        return "#08C6AB"
+
+    @rx.var
+    def accent_color_third(self) -> str:
+        if self.theme_mode == "light":
+            return "#0D9488"
+        if self.theme_mode == "contrast":
+            # return "#95DA67"
+            return "#00C8FF"
+        return "#08C6AB"
+
+    @rx.var
+    def accent_color_forth(self) -> str:
+        if self.theme_mode == "light":
+            return "#0D9488"
+        if self.theme_mode == "contrast":
+            return "#FF7300"
         return "#08C6AB"
 
     @rx.var
@@ -61,7 +87,7 @@ class ThemeState(rx.State):
         if self.theme_mode == "light":
             return "#E5E7EB"
         if self.theme_mode == "contrast":
-            return "#245879"
+            return "#171B2C"
         return "#37465B"
 
     @rx.var
