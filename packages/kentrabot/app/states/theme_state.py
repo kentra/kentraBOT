@@ -21,7 +21,7 @@ class ThemeState(rx.State):
         if self.theme_mode == "light":
             return "#F9FAFB"
         if self.theme_mode == "contrast":
-            return "#000000"
+            return "#0A1026"
         return "#212B38"
 
     @rx.var
@@ -29,7 +29,7 @@ class ThemeState(rx.State):
         if self.theme_mode == "light":
             return "#FFFFFF"
         if self.theme_mode == "contrast":
-            return "#000000"
+            return "#0E1737"
         return "#37465B"
 
     @rx.var
@@ -45,7 +45,7 @@ class ThemeState(rx.State):
         if self.theme_mode == "light":
             return "#6B7280"
         if self.theme_mode == "contrast":
-            return "#FFFF00"
+            return "#9CA3AF"
         return "#9CA3AF"
 
     @rx.var
@@ -53,7 +53,7 @@ class ThemeState(rx.State):
         if self.theme_mode == "light":
             return "#0D9488"
         if self.theme_mode == "contrast":
-            return "#00FFFF"
+            return "#E37AFB"
         return "#08C6AB"
 
     @rx.var
@@ -61,13 +61,13 @@ class ThemeState(rx.State):
         if self.theme_mode == "light":
             return "#E5E7EB"
         if self.theme_mode == "contrast":
-            return "#FFFFFF"
+            return "#245879"
         return "#37465B"
 
     @rx.var
     def border_width(self) -> str:
         if self.theme_mode == "contrast":
-            return "2px"
+            return "1px"
         return "1px"
 
     @rx.var
@@ -75,7 +75,7 @@ class ThemeState(rx.State):
         if self.theme_mode == "light":
             return "#059669"
         if self.theme_mode == "contrast":
-            return "#00FF00"
+            return "#08C6AB"
         return "#08C6AB"
 
     @rx.var
@@ -83,7 +83,7 @@ class ThemeState(rx.State):
         if self.theme_mode == "light":
             return "#D97706"
         if self.theme_mode == "contrast":
-            return "#FFFF00"
+            return "#F59E0B"
         return "#F59E0B"
 
     @rx.var
@@ -91,7 +91,7 @@ class ThemeState(rx.State):
         if self.theme_mode == "light":
             return "#DC2626"
         if self.theme_mode == "contrast":
-            return "#FF0000"
+            return "#EF4444"
         return "#EF4444"
 
     @rx.var

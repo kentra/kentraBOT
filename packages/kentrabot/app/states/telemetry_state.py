@@ -8,7 +8,7 @@ class TelemetryState(rx.State):
 
     motor_temp: int = 42
     belt_speed: int = 0
-    belt_tension: float = 450.0
+    memory_usage: float = 450.0
     current_draw: float = 2.4
     system_health: str = "Optimal"
     previous_health: str = "Optimal"
@@ -39,7 +39,7 @@ class TelemetryState(rx.State):
 
     @rx.var
     def tension_pct(self) -> str:
-        val = (self.belt_tension - 300) / 3.0
+        val = (self.memory_usage - 300) / 3.0
         return f"{max(0, min(100, val)):.1f}%"
 
     @rx.event
@@ -71,7 +71,7 @@ class TelemetryState(rx.State):
                     max(20, min(95, self.motor_temp + random.randint(-1, 2)))
                 )
                 base_tension = 450 + self.belt_speed * 0.2
-                self.belt_tension = max(
+                self.memory_usage = max(
                     300, min(600, base_tension + random.uniform(-10, 10))
                 )
                 base_current = 1.0 + self.belt_speed * 0.01
@@ -81,14 +81,14 @@ class TelemetryState(rx.State):
                 self.uptime_seconds += 2
                 if (
                     self.motor_temp > 85
-                    or self.belt_tension > 580
-                    or self.belt_tension < 320
+                    or self.memory_usage > 580
+                    or self.memory_usage < 320
                 ):
                     self.system_health = "Critical"
                 elif (
                     self.motor_temp > 70
-                    or self.belt_tension > 550
-                    or self.belt_tension < 350
+                    or self.memory_usage > 550
+                    or self.memory_usage < 350
                 ):
                     self.system_health = "Warning"
                 else:
@@ -99,7 +99,7 @@ class TelemetryState(rx.State):
                         log_state.add_log(
                             "error",
                             "System",
-                            f"CRITICAL HEALTH ALERT: Motor {self.motor_temp}°C, Tension {self.belt_tension:.0f}N",
+                            f"CRITICAL HEALTH ALERT: Motor {self.motor_temp}°C, Tension {self.memory_usage:.0f}N",
                         )
                     elif self.system_health == "Warning":
                         log_state.add_log(

@@ -78,17 +78,17 @@ def temp_gauge() -> rx.Component:
     )
 
 
-def tension_meter() -> rx.Component:
+def memory_useage() -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.el.span(
-                "Belt Tension",
+                "Memory Usage",
                 class_name="text-sm font-medium",
                 style={"color": ThemeState.text_secondary},
             ),
             rx.el.span(
-                rx.el.span(TelemetryState.belt_tension.to_string()),
-                " N",
+                rx.el.span(TelemetryState.memory_usage.to_string()),
+                " MB",
                 class_name="text-lg font-bold",
                 style={"color": ThemeState.text_primary},
             ),
@@ -115,8 +115,8 @@ def tension_meter() -> rx.Component:
                 style={
                     "width": TelemetryState.tension_pct,
                     "backgroundColor": rx.cond(
-                        (TelemetryState.belt_tension < 400)
-                        | (TelemetryState.belt_tension > 550),
+                        (TelemetryState.memory_usage < 400)
+                        | (TelemetryState.memory_usage > 550),
                         ThemeState.error_color,
                         ThemeState.accent_color,
                     ),
@@ -126,15 +126,15 @@ def tension_meter() -> rx.Component:
         ),
         rx.el.div(
             rx.el.span(
-                "300N", class_name="text-xs", style={"color": ThemeState.text_secondary}
+                "0GB", class_name="text-xs", style={"color": ThemeState.text_secondary}
             ),
             rx.el.span(
-                "Optimal Range (400-550N)",
+                "Optimal Range (1GB)",
                 class_name="text-xs font-medium",
                 style={"color": ThemeState.accent_color},
             ),
             rx.el.span(
-                "600N", class_name="text-xs", style={"color": ThemeState.text_secondary}
+                "2GB", class_name="text-xs", style={"color": ThemeState.text_secondary}
             ),
             class_name="flex justify-between mt-1",
         ),
@@ -178,4 +178,121 @@ def system_health_indicator() -> rx.Component:
         ),
         class_name="flex items-center px-4 py-2 rounded-full shadow-sm transition-colors duration-300",
         style={"backgroundColor": ThemeState.card_color},
+    )
+
+
+def line_graph():
+    data = [
+        {"name": "RockChip", "cpu_usage": 53, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 7, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 52, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 65, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 71, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 30, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 33, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 100, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 35, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 9, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 65, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 12, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 7, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 7, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 61, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 59, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 13, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 61, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 46, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 41, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 52, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 80, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 92, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 71, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 75, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 20, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 45, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 61, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 87, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 37, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 30, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 32, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 50, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 15, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 54, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 77, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 80, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 11, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 49, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 26, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 50, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 49, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 81, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 43, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 84, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 70, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 79, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 29, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 11, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 86, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 9, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 78, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 69, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 61, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 67, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 69, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 51, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 94, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 20, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 89, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 83, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 89, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 33, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 45, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 8, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 46, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 30, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 62, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 66, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 68, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 46, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 38, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 30, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 45, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 20, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 4, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 85, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 49, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 72, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 17, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 18, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 89, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 86, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 87, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 64, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 97, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 25, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 49, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 90, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 11, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 75, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 55, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 17, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 13, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 80, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 19, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 51, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 35, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 14, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 22, "pv": 4300, "amt": 2100},
+        {"name": "RockChip", "cpu_usage": 88, "pv": 4300, "amt": 2100},
+    ]
+
+    return rx.recharts.line_chart(
+        rx.recharts.line(
+            data_key="cpu_usage",
+        ),
+        rx.recharts.x_axis(data_key="name"),
+        rx.recharts.y_axis(),
+        data=data,
+        width="100%",
+        height=300,
     )

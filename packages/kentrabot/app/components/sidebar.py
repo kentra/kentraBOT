@@ -28,9 +28,9 @@ def sidebar() -> rx.Component:
     return rx.el.aside(
         rx.el.div(
             rx.el.div(
-                rx.icon("cpu", class_name="w-8 h-8 mr-3"),
+                rx.icon("bot", class_name="w-8 h-8 mr-3"),
                 rx.el.h1(
-                    "RoboBelt",
+                    "KentraBOT",
                     class_name="text-xl font-bold tracking-tight",
                     style={"color": ThemeState.text_primary},
                 ),
@@ -67,7 +67,7 @@ def sidebar() -> rx.Component:
                         theme_button("moon", "dark", ThemeState.set_dark_mode),
                         theme_button("sun", "light", ThemeState.set_light_mode),
                         theme_button(
-                            "contrast", "contrast", ThemeState.set_contrast_mode
+                            "biohazard", "contrast", ThemeState.set_contrast_mode
                         ),
                         class_name="flex gap-2 mb-6",
                     ),
@@ -75,7 +75,8 @@ def sidebar() -> rx.Component:
                 ),
                 rx.el.div(
                     rx.el.div(
-                        rx.icon("user", class_name="w-5 h-5"),
+                        # rx.icon("user", class_name="w-5 h-5"),
+                        rx.avatar(src="/selfie_rick.png"),
                         class_name="w-10 h-10 rounded-full flex items-center justify-center border",
                         style={
                             "backgroundColor": ThemeState.card_color,

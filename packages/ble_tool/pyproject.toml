@@ -20,4 +20,4 @@ lint = ["ruff"]
 
 
 [tool.uv.workspace]
-members = [""]
+members = ["./"]

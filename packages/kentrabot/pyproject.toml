@@ -4,7 +4,10 @@ version = "0.1.0"
 description = "Library to control fake chinese lego hubs with motors using BLE"
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = ["reflex==0.8.20"]
+dependencies = [
+    "reflex==0.8.20",
+    "reflex-map>=0.2.3",
+]
 
 
 [dependency-groups]

@@ -4,9 +4,11 @@ from app.states.telemetry_state import TelemetryState
 from app.states.theme_state import ThemeState
 from app.components.visualizations import (
     temp_gauge,
-    tension_meter,
+    line_graph,
+    memory_useage,
     system_health_indicator,
 )
+from app.components.map import default_map
 
 
 def status_card(
@@ -106,11 +108,13 @@ def system_status_page() -> rx.Component:
                     rx.el.div(
                         rx.el.div(
                             rx.el.h4(
-                                "Motor Thermal Monitor",
+                                "CPU Temperature",
                                 class_name="text-sm font-medium mb-6",
                                 style={"color": ThemeState.text_secondary},
                             ),
-                            temp_gauge(),
+                            # temp_gauge(),
+                            line_graph(),
+                            # default_map(),
                             class_name="flex flex-col items-center justify-center p-6 rounded-xl transition-colors duration-300",
                             style={
                                 "backgroundColor": ThemeState.bg_color,
@@ -120,11 +124,11 @@ def system_status_page() -> rx.Component:
                         rx.el.div(
                             rx.el.div(
                                 rx.el.h4(
-                                    "Belt Tension Analysis",
+                                    "CPU Load",
                                     class_name="text-sm font-medium mb-4",
                                     style={"color": ThemeState.text_secondary},
                                 ),
-                                tension_meter(),
+                                memory_useage(),
                                 class_name="mb-8",
                             ),
                             rx.el.div(
@@ -136,7 +140,7 @@ def system_status_page() -> rx.Component:
                                 rx.el.div(
                                     rx.el.div(
                                         rx.el.span(
-                                            "Drive Motor",
+                                            "Bluetooth Connection",
                                             class_name="text-sm",
                                             style={"color": ThemeState.text_primary},
                                         ),
@@ -165,12 +169,12 @@ def system_status_page() -> rx.Component:
                                     ),
                                     rx.el.div(
                                         rx.el.span(
-                                            "Tensioner Arm",
+                                            "Camera Status",
                                             class_name="text-sm",
                                             style={"color": ThemeState.text_primary},
                                         ),
                                         rx.el.span(
-                                            "Locked",
+                                            "Streaming",
                                             class_name="text-xs font-bold px-2 py-1 rounded-full",
                                             style={
                                                 "color": ThemeState.success_color,
