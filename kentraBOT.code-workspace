@@ -1,14 +1,16 @@
 {
 	"folders": [
 		{
-			"path": "packages/kentrabot"
-		},
-		{
-			"path": "packages/ble_tool"
-		},
-		{
-			"path": "doc"
-		},
+			"path": "."
+		}
 	],
-	"settings": {}
+	"settings": {
+		"python.defaultInterpreterPath": "./venv/bin/python",
+		"ruff.interpreter": [
+			"./venv/bin/python"
+		],
+		"ty.interpreter": [
+			"./venv/bin/python"
+		]
+	}
 }

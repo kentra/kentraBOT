@@ -45,45 +45,45 @@ class ConfigState(rx.State):
         self.has_unsaved_changes = True
 
     @rx.event
-    def set_max_speed(self, value: str):
+    def set_max_speed(self, value: int):
         try:
-            self.max_speed = int(float(value))
+            self.max_speed = int(value)
             self.has_unsaved_changes = True
         except ValueError as e:
             logging.exception(f"Error: {e}")
             pass
 
     @rx.event
-    def set_pid_p(self, value: str):
+    def set_pid_p(self, value: int):
         try:
-            self.pid_p = float(value)
+            self.pid_p = int(value)
             self.has_unsaved_changes = True
         except ValueError as e:
             logging.exception(f"Error: {e}")
             pass
 
     @rx.event
-    def set_pid_i(self, value: str):
+    def set_pid_i(self, value: int):
         try:
-            self.pid_i = float(value)
+            self.pid_i = int(value)
             self.has_unsaved_changes = True
         except ValueError as e:
             logging.exception(f"Error: {e}")
             pass
 
     @rx.event
-    def set_pid_d(self, value: str):
+    def set_pid_d(self, value: int):
         try:
-            self.pid_d = float(value)
+            self.pid_d = int(value)
             self.has_unsaved_changes = True
         except ValueError as e:
             logging.exception(f"Error: {e}")
             pass
 
     @rx.event
-    def set_calibration_offset(self, value: str):
+    def set_calibration_offset(self, value: int):
         try:
-            self.calibration_offset = int(float(value))
+            self.calibration_offset = int(value)
             self.has_unsaved_changes = True
         except ValueError as e:
             logging.exception(f"Error: {e}")

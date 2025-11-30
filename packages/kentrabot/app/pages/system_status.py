@@ -93,7 +93,7 @@ def system_status_page() -> rx.Component:
                     "-1.2% Usage",
                     True,
                 ),
-                status_card("Uptime", str(TelemetryState.uptime_formatted), "clock"),
+                status_card("Uptime", f"{TelemetryState.uptime_formatted}", "clock"),
                 class_name="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8",
             ),
             rx.el.div(
