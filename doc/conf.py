@@ -11,7 +11,7 @@ from pathlib import Path
 sys.path.append(str(Path('../src').resolve()))
 
 
-project = 'Lego_BLE'
+project = 'KentraBOT'
 copyright = '2025, Daniel Kolstad'
 author = 'Daniel Kolstad'
 release = '1.0.0'

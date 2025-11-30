@@ -19,8 +19,11 @@ class TelemetryState(rx.State):
     def uptime_formatted(self) -> str:
         hours = self.uptime_seconds // 3600
         minutes = self.uptime_seconds % 3600 // 60
+        # with open('/proc/uptime', 'r') as f:
+        #     uptime_seconds = float(f.readline().split()[0])
         return f"{hours}h {minutes}m"
 
+    #     return uptime_seconds
     @rx.var
     def health_color(self) -> str:
         if self.system_health == "Optimal":

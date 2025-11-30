@@ -1,4 +1,4 @@
-###  ✔ Success! Created a Playwright Test project at /Users/daniko/Documents/Code/Python/Lego_BLE
+###  ✔ Success! Created a Playwright Test project at /Users/daniko/Documents/Code/Python/KentraBOT
 
 Inside that directory, you can run several commands:
 ```
