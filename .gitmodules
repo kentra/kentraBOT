@@ -1,0 +1,3 @@
+[submodule "packages/rover_client"]
+	path = packages/rover_client
+	url = git@github.com:kentra/rover_client.git

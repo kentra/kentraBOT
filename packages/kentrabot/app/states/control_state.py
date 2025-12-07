@@ -72,7 +72,8 @@ class ControlState(rx.State):
         if new_speed > max_limit:
             new_speed = max_limit
             yield rx.toast(
-                f"Speed limited to {max_limit} RPM by configuration.", duration=3000,
+                f"Speed limited to {max_limit} RPM by configuration.",
+                duration=3000,
             )
         if self.target_speed != new_speed:
             logs = await self.get_state(LogState)
@@ -120,7 +121,9 @@ class ControlState(rx.State):
         self.show_estop_confirm = False
         logs = await self.get_state(LogState)
         logs.add_log(
-            "error", "System", "EMERGENCY STOP TRIGGERED BY USER. SYSTEM HALTED.",
+            "error",
+            "System",
+            "EMERGENCY STOP TRIGGERED BY USER. SYSTEM HALTED.",
         )
         yield rx.toast("EMERGENCY STOP TRIGGERED! System Halted.", duration=5000)
 
@@ -130,6 +133,8 @@ class ControlState(rx.State):
         self.emergency_stop_active = False
         logs = await self.get_state(LogState)
         logs.add_log(
-            "warning", "System", "Emergency stop reset. System returned to ready state.",
+            "warning",
+            "System",
+            "Emergency stop reset. System returned to ready state.",
         )
         yield rx.toast("Emergency Stop reset. System ready.", duration=3000)
